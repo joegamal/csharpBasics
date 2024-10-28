@@ -1,0 +1,97 @@
+using System;
+
+
+/*
+    in this c# file we explain inheritance in c#
+    a child class will inherit all mathods and fields 
+    from parent class. unless it they are declared privare.
+*/
+
+
+public class A
+{
+    public int num = 555;
+   public void food()
+   {
+        Console.WriteLine("default func from A");
+   }
+
+   public A()
+   {
+        Console.WriteLine("default constructor from A");
+   }
+}
+
+
+public abstract class C
+{
+    public void fun()
+    {
+        Console.WriteLine("abstract func from c");
+    }
+
+    // abstract method in c#
+    public abstract void fun1();
+
+    public virtual void fun2()
+    {
+        Console.WriteLine("virtual func2 from C");
+    }
+}
+
+
+public class D : C
+{
+    // this is how to override an abstract method in c#.
+
+
+    // Implementing abstract method
+    public override void fun1()
+    {
+        Console.WriteLine("fun1 overriden from D");
+    }
+
+    // overriding the virtual method in c#.
+    // the new method body will be executed.
+    public override void fun2()
+    {
+        Console.WriteLine("virtual func2 from b");
+    }
+}
+
+
+public class B : A
+{
+    // you dont have to call the parent constructor manually
+    //in c# it will be called automatically and then executed
+    //the child constructor.
+    public B()
+    {
+        Console.WriteLine("constructor from B");
+    }
+}
+
+
+public class one
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Hello World!");
+
+        B obj = new B();
+        obj.food();   // calling the overridden function.
+        // it also inherits  the constructor of the parent class.
+        // you can also inherit data fields.
+        Console.WriteLine(obj.num);
+
+        D obj2 = new D();
+
+        //C obj3 = new C(); cannot create an object for abstract class.
+
+        obj2.fun(); // the methods in abstract class is inherited in the child class.
+
+        obj2.fun1(); // the methods in child class is overridden.
+
+        obj2.fun2(); // the methods in child class is also overridden.
+    }
+}
